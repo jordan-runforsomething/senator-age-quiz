@@ -1,10 +1,9 @@
-import styles from './header.module.scss'
+import styles from './componentStyles.module.scss'
 
 export default function Welcome() {
   return (
-    <div className={styles.description}>
-    <h1>Welcome!</h1>
-    <h2>So glad you're here</h2>
+    <div className={styles.welcome}>
+      <h1 className="text-3xl font-bold underline">Welcome!</h1>
     </div>
   )
 }

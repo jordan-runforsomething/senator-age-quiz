@@ -1,0 +1,14 @@
+/** Contains styles for all components.
+    Put in one place because there are so few of them
+*/
+.footer {
+    height: 400px;
+    background: url('/images/footer4.png');
+    background-position: center -10px;
+    background-size: cover;
+}
+.header {
+    height: 120px;
+    background: #eee;
+    padding: 24px;
+  }
