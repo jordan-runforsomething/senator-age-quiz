@@ -1,0 +1,33 @@
+.quizContainer {
+    @media(max-width) {
+        
+    }
+}
+
+.playerContainer {
+    flex-basis: 1;
+    padding: 2% 24px;
+    h2 {
+        margin-bottom: 46px;
+    }
+}
+.answersContainer {
+    flex-basis: 3;
+    padding: 2% 5%;
+    justify-content: center;
+}
+
+.option {
+    margin: 3% 4%;
+    padding: 2%;
+    border: solid 4px white;
+    cursor: pointer;
+
+    h4 {
+        text-align: center;
+        margin-bottom: 8px;
+    }
+}
+.optionSelected {
+    border: solid 4px green;
+}
