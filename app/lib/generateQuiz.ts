@@ -66,9 +66,13 @@ const generateQuiz = function (quizData: SenatorData[]) {
       ],
     }
     // Choose random other options
+    const selectedIndices = new Set()
     while (question.options.length < NUM_OPTIONS) {
       const idx = _.random(0, allOptions.length - 1)
-      if (allData[idx].song_link !== allData[q].song_link) {
+      if (
+        allData[idx].song_link !== allData[q].song_link &&
+        !selectedIndices.has(idx)
+      ) {
         question.options.push({
           name:
             allData[idx].first_name +
@@ -79,6 +83,9 @@ const generateQuiz = function (quizData: SenatorData[]) {
           image: allData[idx].image_url,
           birthYear: new Date(allData[idx].birthday).getFullYear(),
         })
+
+        // Make sure we don't add the same option more than once
+        selectedIndices.add(idx)
       }
     }
     // Shuffle options otherwise the first one is always the answer

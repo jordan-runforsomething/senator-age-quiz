@@ -84,7 +84,7 @@ export default function QuizApp({ QuizData }: { QuizData: SenatorData[] }) {
       // If we are showing results, we display some text indicating whether or not answer is corrct
       let bannerText = ""
       if (showCorrect) {
-        bannerText = isSelected ? "Correct!" : "Correct Answer"
+        bannerText = isSelected ? "Correct!" : "Correct"
       } else if (showIncorrect) {
         bannerText = "Incorrect :("
       }
@@ -194,13 +194,15 @@ export default function QuizApp({ QuizData }: { QuizData: SenatorData[] }) {
     !hideConfetti
   return (
     <>
-      <Header />
+      <div className="hidden md:block">
+        <Header />
+      </div>
       <main className={`${quizStyles.quizContainer} pt-4`}>
         {showConfetti && <Confetti {...CONFETTI_PROPS} />}
         {loading ? (
           <Progress isIndeterminate />
         ) : (
-          <div className="flex items-center flex-col lg:flex-row">
+          <div className="flex gap-0 justify-start items-center flex-col lg:flex-row py-2 md:py-0">
             <div className={quizStyles.playerContainer}>
               <SongPlayer songURL={currentQuestion.song} />
               <div className="showIncrement z-11 h-4 text-center">
@@ -231,12 +233,12 @@ export default function QuizApp({ QuizData }: { QuizData: SenatorData[] }) {
               </div>
             </div>
             <div className={quizStyles.answersContainer}>
-              <h2 className="mt-3 px-5 md:text-xl text-center">
+              <h2 className="mt-3 mb-3 md:mb-0 px-5 md:text-xl text-center">
                 Which senator was born the week {currentQuestion.title} was the
                 #1 song?
               </h2>
               <div
-                className={`${quizStyles.answersContainerInner} flex items-center mt-5 flex-row justify-center flex-wrap`}
+                className={`${quizStyles.answersContainerInner} flex items-center md:mt-5 flex-row justify-center flex-wrap`}
               >
                 {currentQuestion.options.map(renderOption)}
               </div>
