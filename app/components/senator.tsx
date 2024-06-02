@@ -2,33 +2,39 @@
  * This card used to display a senator is re-used throughout the app. It can optionally be made selectable.
  * This card fills its container, allowing for it to be used in responsive layouts
  */
+"use client"
+import React, { useEffect, useState } from "react"
+import { SenatorData } from "../lib/loadData"
+import { Image } from "@nextui-org/image"
+import _ from "lodash"
 
-import React, { useEffect, useState } from 'react'
-import _ from 'lodash'
-
-import styles from './senator.module.scss'
+import styles from "./styles/senator.module.scss"
 
 type Props = {
-  senator_id: string,
-  showName?: boolean,
-  showBirthYear?: boolean,
+  senator: SenatorData
+  showName?: boolean
+  showBirthYear?: boolean
   selectable?: boolean
 }
 
 const Senator = ({
-  senator_id,
+  senator,
   showName = true,
   showBirthYear = false,
-  selectable = true
+  selectable = true,
 }: Props) => {
-  const [loading, setLoading] = useState(false)
-
-
-  useEffect(() => {
-    setLoading(true)
-  }, [dispatch])
-  return (<div className={styles.Senator}>
-
-  </div>)
+  const [selected, setSelected] = useState(false)
+  return (
+    <div className={styles.senatorCard}>
+      <Image
+        alt={`${senator.first_name} ${senator.last_name}`}
+        className="object-cover rounded-xl"
+        src={senator.image_url}
+        width={200}
+        height={200}
+        isZoomed
+      />
+    </div>
+  )
 }
 export default Senator

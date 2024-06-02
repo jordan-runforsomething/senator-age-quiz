@@ -2,13 +2,28 @@
     Put in one place because there are so few of them
 */
 .footer {
-    height: 400px;
-    background: url('/images/footer4.png');
-    background-position: center -10px;
-    background-size: cover;
+    height: 200px;
+    width: 100%;
+    background: url('/images/footer11.png');
+    background-position: center 30px;
+    background-size: contain;
+    background-repeat: repeat-x;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    .attribution {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: black;
+        color: white;
+    }
 }
 .header {
-    height: 120px;
-    background: #eee;
+    height: 40px;
     padding: 24px;
   }
+.welcome {
+    
+}
