@@ -16,8 +16,9 @@ const SongPlayer = ({ songURL }: Props) => {
     _.debounce(() => {
       const spotifyEmbedWindow = document.querySelector(
         'iframe[src*="spotify.com/embed"]'
-      ).contentWindow
-      spotifyEmbedWindow.postMessage({ command: "toggle" }, "*")
+      ) as HTMLIFrameElement
+      if (!spotifyEmbedWindow?.contentWindow) return
+      spotifyEmbedWindow.contentWindow.postMessage({ command: "toggle" }, "*")
     }, SONG_DELAY * 0.75),
     []
   )
@@ -29,7 +30,7 @@ const SongPlayer = ({ songURL }: Props) => {
   }, [songURL])
 
   const browserSize = useWindowSize()
-  const spotifyProps = {
+  const spotifyProps: React.ComponentProps<typeof Spotify> = {
     link: songURL,
     allow: "autoplay",
   }
