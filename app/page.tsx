@@ -4,6 +4,7 @@ import Footer from "./components/footer"
 import GetData, { SenatorData } from "./lib/loadData"
 import Senator from "./components/senator"
 import Header from "./components/header"
+import _ from "lodash"
 
 /** Welcome page with mosaic of senators */
 export default async function Home() {
@@ -21,7 +22,9 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <div className={styles.mosaic}>{quizData.map(renderSenator)}</div>
+      <div className={`${styles.mosaic} pt-3`}>
+        {_.shuffle(quizData).map(renderSenator)}
+      </div>
       <main className={styles.main}>
         <div className={styles.center}>
           <Welcome />

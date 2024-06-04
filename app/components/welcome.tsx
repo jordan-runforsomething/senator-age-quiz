@@ -5,10 +5,10 @@ import Link from "next/link"
 export default function Welcome() {
   return (
     <div
-      className={`${styles.welcome} flex  flex-col w-96 md:w-full justify-center items-center rounded-md text-center p-5 bg-black/60 border-red border-8`}
+      className={`${styles.welcome} flex text-lg flex-col w-96 md:w-full justify-center items-center rounded-md text-center p-5 md:px-12 bg-black/70 border-red border-8`}
     >
       <h1 className="text-3xl font-bold underline">Congress Bops</h1>
-      <p className="mt-2">
+      <p className="mt-2 md:mt-6">
         You will be presented 12 US Billboard Top Hit songs.
       </p>
       <p className="mt-2">
@@ -29,7 +29,7 @@ export default function Welcome() {
         </ol>
       </div>
 
-      <Button as={Link} className="bg-blue mt-8 p-5 text-2xl" href="/quiz">
+      <Button as={Link} className="bg-blue mt-8 mb-4 p-5 text-2xl" href="/quiz">
         {/* {loading && <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24"></svg>} */}
         Got it - Start the Quiz
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>

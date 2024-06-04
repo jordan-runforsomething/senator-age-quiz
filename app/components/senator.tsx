@@ -23,7 +23,6 @@ const Senator = ({
   showBirthYear = false,
   selectable = true,
 }: Props) => {
-  const [selected, setSelected] = useState(false)
   return (
     <div className={styles.senatorCard}>
       <Image

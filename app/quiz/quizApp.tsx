@@ -1,13 +1,13 @@
 "use client"
-import quizStyles from "./quizPage.module.scss"
-import Header from "../components/header"
-import { Progress } from "@nextui-org/progress"
-import { useCallback, useState } from "react"
 import { Button } from "@nextui-org/button"
-import Footer from "../components/footer"
-import { Card, Image, CardFooter, CardHeader, Switch } from "@nextui-org/react"
+import { Progress } from "@nextui-org/progress"
+import { Card, CardFooter, Image, Switch } from "@nextui-org/react"
+import { useCallback, useState } from "react"
 import Confetti from "react-confetti"
 import { BsFillArrowRightCircleFill } from "react-icons/bs"
+import Footer from "../components/footer"
+import Header from "../components/header"
+import quizStyles from "./quizPage.module.scss"
 
 const SHOW_SCORE_INCREMENT_DURATION = 3000 // How long to show addition to score upon answer
 const CONFETTI_DURATION = 3000 // ms. Max time confetti is shown. Note its also hidden when user goes to next question
@@ -18,10 +18,10 @@ const CONFETTI_PROPS = {
 }
 
 // Types
-import generateQuiz, { Question, calculateScore } from "../lib/generateQuiz"
-import SongPlayer from "../components/songPlayer"
-import { SenatorData } from "../lib/loadData"
 import QuizProgress from "../components/progress"
+import SongPlayer from "../components/songPlayer"
+import generateQuiz, { Question, calculateScore } from "../lib/generateQuiz"
+import { SenatorData } from "../lib/loadData"
 
 /**
  * Quiz page. This renders the full page, and is a client side bundle
@@ -36,7 +36,6 @@ export default function QuizApp({ QuizData }: { QuizData: SenatorData[] }) {
   )
   const [selectedAnswer, setSelectedAnswer] = useState("")
   const [score, setScore] = useState(0)
-  const [loading, setLoading] = useState(false)
   const [currentQuestionStartTime, setCurrentQuestionStartTime] = useState(
     Date.now()
   )
@@ -199,65 +198,61 @@ export default function QuizApp({ QuizData }: { QuizData: SenatorData[] }) {
       </div>
       <main className={`${quizStyles.quizContainer} pt-4`}>
         {showConfetti && <Confetti {...CONFETTI_PROPS} />}
-        {loading ? (
-          <Progress isIndeterminate />
-        ) : (
-          <div className="flex gap-0 justify-start items-center flex-col lg:flex-row py-2 md:py-0">
-            <div className={quizStyles.playerContainer}>
-              <SongPlayer songURL={currentQuestion.song} />
-              <div className="showIncrement z-11 h-4 text-center">
-                <span
-                  className={`${quizStyles.incrementText} opacity-${
-                    showScoreIncrementAmount > 0 ? 100 : 0
-                  } transition-opacity drop-shadow-xl text-bold relative bottom-4 text-3xl text-red`}
-                >
-                  +{showScoreIncrementAmount}
-                </span>
-              </div>
-              <QuizProgress
-                totalQuestions={quizQuestions.length}
-                currentQuestion={currentQuestionIndex}
-                score={score}
-              />
-              <div className="hidden md:flex justify-center py-4 rounded-lg mb-4 bg-default/10">
-                <Switch
-                  onChange={() => setHardMode(!hardMode)}
-                  color="danger"
-                  className="border-red"
-                >
-                  <span className="text-white">Hard Mode</span>
-                  <span className="text-white text-sm o-9">
-                    &nbsp;&nbsp;(hide age)
-                  </span>
-                </Switch>
-              </div>
-            </div>
-            <div className={quizStyles.answersContainer}>
-              <h2 className="mt-3 mb-3 md:mb-0 px-5 md:text-xl text-center">
-                Which senator was born the week {currentQuestion.title} was the
-                #1 song?
-              </h2>
-              <div
-                className={`${quizStyles.answersContainerInner} flex items-center md:mt-5 flex-row justify-center flex-wrap`}
+        <div className="flex gap-0 justify-start items-center flex-col lg:flex-row py-2 md:py-0">
+          <div className={quizStyles.playerContainer}>
+            <SongPlayer songURL={currentQuestion.song} />
+            <div className="showIncrement z-11 h-4 text-center">
+              <span
+                className={`${quizStyles.incrementText} opacity-${
+                  showScoreIncrementAmount > 0 ? 100 : 0
+                } transition-opacity drop-shadow-xl text-bold relative bottom-4 text-3xl text-red`}
               >
-                {currentQuestion.options.map(renderOption)}
-              </div>
-              {isTransitioning && (
-                <div className="flex flex-row justify-center mt-4">
-                  <Button
-                    onPress={nextQuestion}
-                    color="success"
-                    className="text-white bg-green w-100 text-black"
-                    variant="shadow"
-                    endContent={<BsFillArrowRightCircleFill />}
-                  >
-                    Next Question
-                  </Button>
-                </div>
-              )}
+                +{showScoreIncrementAmount}
+              </span>
+            </div>
+            <QuizProgress
+              totalQuestions={quizQuestions.length}
+              currentQuestion={currentQuestionIndex}
+              score={score}
+            />
+            <div className="hidden md:flex justify-center py-4 rounded-lg mb-4 bg-default/10">
+              <Switch
+                onChange={() => setHardMode(!hardMode)}
+                color="danger"
+                className="border-red"
+              >
+                <span className="text-white">Hard Mode</span>
+                <span className="text-white text-sm o-9">
+                  &nbsp;&nbsp;(hide age)
+                </span>
+              </Switch>
             </div>
           </div>
-        )}
+          <div className={quizStyles.answersContainer}>
+            <h2 className="mt-3 mb-3 md:mb-0 px-5 md:text-xl text-center">
+              Which senator was born the week {currentQuestion.title} was the #1
+              song?
+            </h2>
+            <div
+              className={`${quizStyles.answersContainerInner} flex items-center md:mt-5 flex-row justify-center flex-wrap`}
+            >
+              {currentQuestion.options.map(renderOption)}
+            </div>
+            {isTransitioning && (
+              <div className="flex flex-row justify-center mt-4">
+                <Button
+                  onPress={nextQuestion}
+                  color="success"
+                  className="text-white bg-green w-100 text-black"
+                  variant="shadow"
+                  endContent={<BsFillArrowRightCircleFill />}
+                >
+                  Next Question
+                </Button>
+              </div>
+            )}
+          </div>
+        </div>
       </main>
       <Footer />
     </>
