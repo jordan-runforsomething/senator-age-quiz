@@ -1,7 +1,5 @@
-import styles from './componentStyles.module.scss'
+import styles from "./styles/componentStyles.module.scss"
 
 export default function Footer() {
-  return (
-    <div className={styles.footer} />
-  )
+  return <div className={styles.footer}></div>
 }

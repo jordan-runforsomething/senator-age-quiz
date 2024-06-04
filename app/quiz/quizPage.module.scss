@@ -1,0 +1,79 @@
+// Container with both our player (left) and answers (right)
+.quizContainer {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.playerContainer {
+    padding-right: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.answersContainer {
+    padding-left: 2vw;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @media screen and (min-width: 1024px) {
+        min-height: 80vh;
+    }
+
+}
+.answersContainerInner {
+    width: 100%;
+    @media screen and (min-width: 1024px) {
+        max-width: 40vw;
+    }
+}
+.answersContainerBackground {
+    width: 100%;
+    max-width: 860px;
+    height: 100%;
+    max-height: 700px;
+    position: absolute;
+    top: 60px;
+    
+    border-top: solid 12px #333;
+    border-left: solid 10px #444;
+    border-bottom: solid 8px #555;
+    // transform: rotate(2deg);
+    opacity: 0.7;
+}
+.incrementText {
+    text-shadow: 2px 2px 10px var(--red);
+}
+.option {
+    cursor: pointer;
+    width: 18vw;
+    margin: 2vh 1vw;
+    border-bottom: solid 6px var(--blue);
+    border-left: solid 6px var(--blue);
+    border-top: solid 10px var(--darkBlue);
+    border-right: solid 10px var(--darkBlue);
+    border-radius: 24px;
+    @media screen and (max-width: 1024px) {
+        flex-basis: 42vw;
+        margin: 1vh 2vw;
+    }
+}
+.optionGreenBorder {
+    border: solid 8px var(--green);
+}
+.optionRedBorder {
+    border: solid 8px var(--red);
+}
+.ageBanner {
+    margin-top: -7px;
+    margin-bottom: -5px;
+}
+.nameBanner {
+    @media screen and (max-width: 1024px) {
+        // Ensures they're all same height on mobile event if there is a line break
+        min-height: 56px;
+    }
+}

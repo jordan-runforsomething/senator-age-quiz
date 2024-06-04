@@ -1,30 +1,36 @@
+import styles from "./page.module.scss"
+import Welcome from "./components/welcome"
+import Footer from "./components/footer"
+import GetData, { SenatorData } from "./lib/loadData"
+import Senator from "./components/senator"
+import Header from "./components/header"
+import _ from "lodash"
 
-import styles from './page.module.css'
-import Welcome from './components/welcome'
-import Header from './components/header'
-import { Link } from "@nextui-org/link";
-import { button as buttonStyles } from "@nextui-org/theme";
-import Footer from './components/footer';
+/** Welcome page with mosaic of senators */
+export default async function Home() {
+  const quizData = await GetData()
 
-export default function Home() {
+  // Helper function to render a single senator in a mosaic tile
+  const renderSenator = (senator: SenatorData) => {
+    return (
+      <div className={styles.mosaicTile}>
+        <Senator senator={senator} />
+      </div>
+    )
+  }
+
   return (
     <>
-    <Header />
-    <main className={styles.main}>
-      <div className={styles.center}>
-        <Welcome />
+      <Header />
+      <div className={`${styles.mosaic} pt-3`}>
+        {_.shuffle(quizData).map(renderSenator)}
       </div>
-
-      <div className={styles.center}>
-        <Link
-						className={buttonStyles({size: "lg", variant: "shadow", color: "primary", radius: "full" })}
-						href="/quiz"
-					>
-						Got it! Let&apos;s get started
-					</Link>
-      </div>
-    </main>
-    <Footer />
+      <main className={styles.main}>
+        <div className={styles.center}>
+          <Welcome />
+        </div>
+      </main>
+      <Footer />
     </>
   )
 }
