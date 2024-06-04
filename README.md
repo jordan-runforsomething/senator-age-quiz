@@ -6,6 +6,7 @@ This app is a learning project. My goal was primarily to explore NextJS and AI i
 - [DreamStudio](https://beta.dreamstudio.ai/generate) from stability.ai was used to generate the satirical images of each senator in some happy musical context.
 - [NextUI](https://nextui.org/) - which depends on [Tailwindcss](https://tailwindcss.com/) - was used as a UI library so I could focus on writing Typescript instead of CSS :p
 - Spotify (specifically [Spotify Web Embed](https://developer.spotify.com/documentation/embeds/references/iframe-api)) is used to play the songs. If the user is logged in to Spotify in their browser, they can listen to each song in full and add to their Spotify library. If not, Spotify plays a 30 second preview of the song.
+- I use SASS because writing vanilla CSS takes too long. The standard [NextJS SASS config](https://nextjs.org/docs/app/building-your-application/styling/sass) applies
 
 
 ## Getting Started
