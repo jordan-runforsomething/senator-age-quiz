@@ -11,9 +11,9 @@ export default function Welcome() {
       <p className="mt-2 md:mt-6">
         You will be presented 12 US Billboard Top Hit songs.
       </p>
-      <p className="mt-2">
-        For each, guess which of 4 Senators was born the week the song topped
-        the charts.
+      <p className="mt-3">
+        For each, you will guess which of 4 Senators was born during the week
+        the song topped the charts.
       </p>
 
       <div className="inline-flex text-left mt-9 border-blue border-2 rounded-md p-4">

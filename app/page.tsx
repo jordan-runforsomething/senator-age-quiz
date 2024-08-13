@@ -11,9 +11,9 @@ export default async function Home() {
   const quizData = await GetData()
 
   // Helper function to render a single senator in a mosaic tile
-  const renderSenator = (senator: SenatorData) => {
+  const renderSenator = (senator: SenatorData, idx: number) => {
     return (
-      <div className={styles.mosaicTile}>
+      <div className={styles.mosaicTile} key={idx}>
         <Senator senator={senator} />
       </div>
     )

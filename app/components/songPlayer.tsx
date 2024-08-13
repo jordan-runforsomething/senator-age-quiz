@@ -9,18 +9,20 @@ const SONG_DELAY = 950 // ms before we play the song
 
 type Props = {
   songURL: string
+  autoplay?: boolean
 }
 
-const SongPlayer = ({ songURL }: Props) => {
+const SongPlayer = ({ songURL, autoplay = false }: Props) => {
   const togglePlay = useCallback(
     _.debounce(() => {
+      if (!autoplay) return
       const spotifyEmbedWindow = document.querySelector(
         'iframe[src*="spotify.com/embed"]'
       ) as HTMLIFrameElement
       if (!spotifyEmbedWindow?.contentWindow) return
       spotifyEmbedWindow.contentWindow.postMessage({ command: "toggle" }, "*")
     }, SONG_DELAY * 0.75),
-    []
+    [autoplay]
   )
 
   useEffect(() => {
