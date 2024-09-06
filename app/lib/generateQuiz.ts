@@ -2,8 +2,8 @@ import _ from "lodash"
 import GetData, { SenatorData } from "./loadData"
 
 // Some Config
-const NUM_QUESTIONS = 2
-const NUM_OPTIONS = 4 // Total number of options, including correct answer
+export const NUM_QUESTIONS = 12 // Total number of questions
+export const NUM_OPTIONS = 4 // Total number of options, including correct answer
 
 export type AnswerOption = {
   name: string
