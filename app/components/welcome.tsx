@@ -1,6 +1,7 @@
 import { Button } from "@nextui-org/react"
 import styles from "./styles/componentStyles.module.scss"
 import Link from "next/link"
+import { NUM_OPTIONS, NUM_QUESTIONS } from "../lib/generateQuiz"
 
 export default function Welcome() {
   return (
@@ -9,17 +10,17 @@ export default function Welcome() {
     >
       <h1 className="text-3xl font-bold underline">Congress Bops</h1>
       <p className="mt-2 md:mt-6">
-        You will be presented 12 US Billboard Top Hit songs.
+        You will be presented {NUM_QUESTIONS} US Billboard Top Hit songs.
       </p>
       <p className="mt-3">
-        For each, you will guess which of 4 Senators was born during the week
-        the song topped the charts.
+        For each, you will guess which of {NUM_OPTIONS} Senators was born during
+        the week the song topped the charts.
       </p>
 
       <div className="inline-flex text-left mt-9 border-blue border-2 rounded-md p-4">
         <div className="mr-8 pt-2 md:p-4">
           <p className="font-bold text-center md:text-left text-lg text-white pt-1 rounded-md">
-            You get points for:
+            You get more points for:
           </p>
         </div>
 
